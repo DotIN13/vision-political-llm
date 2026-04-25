@@ -31,6 +31,10 @@ To answer this, we used Gemini to generate an artificial dataset of 100 perfectl
 
 We applied our combined probe to these 100 image pairs to calculate the mean "ideology score" across the image tokens.
 
+![Empirical Token Score Differences](./images/diff.png)
+
+*Figure: A visual representation of the score differences across image tokens. Empirically, the tokens corresponding to the tie area seem to show a more positive (conservative) difference when comparing the red tie to the blue tie.*
+
 The findings show a small but highly statistically significant difference in the model's ideology score based on the color of the tie. Even with identical facial features and framing, the **mean token score was consistently higher (more conservative) for the red tie images** compared to the blue tie images. 
 
 ![Red vs Blue Token Score Distribution](./images/red-blue_dist.png)
@@ -43,7 +47,7 @@ To see if this visual cue would actually influence downstream generation, we ask
 
 ![Last Token Score Difference](./images/last_token_diff_dist.png)
 
-*Figure: The difference in the last token position score when prompted to write a news article. Just like the image patches, the final generative state skewed more conservative for the red tie photos.*
+*Figure: The difference in the last token position score when prompted to write a news article. Just like the image tokens, the final generative state skewed more conservative for the red tie photos.*
 
 The score at the last token position was also significantly higher for the red tie photos (red mean: $0.0887$, blue mean: $0.0827$, mean delta: $0.006$). This suggests that a subtle visual manipulation in the input image—something as simple as a wardrobe choice—can shift the ideological stance of the AI's subsequent text generation. The model seems to be playing the human political game.
 

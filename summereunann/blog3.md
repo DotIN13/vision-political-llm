@@ -6,6 +6,23 @@
 
 Over the past several weeks, I built a benchmark of nine scientific optimization tasks and ran ten different multi-agent collaboration protocols on each one. By the end of last week, I learned that a simple single-model baseline outranked almost every multi-agent protocol when they were scored by an evaluator that the models could not see. A ran a controlled 2x2 ablation experiment that crossed two binary variables. The first was whether the agents in a protocol came from different AI model families or copies of the same model. The second was whether the protocol included a step that combined the agents' proposals into a single final answer. The first variable was important, but the second one was not. Backbone diversity is when there is a mix of underlying models, and this turned out to be the differentiating feature.
 
+## Protocol Overview
+
+| Protocol | Type | Agents interact? | Diverse models? |
+|---|---|---|---|
+| Single-shot | Single-agent | — | — |
+| Best-of-N | Single-agent | — | — |
+| Self-Refine | Single-agent | — | — |
+| VGS | Single-agent | — | — |
+| MoA — diverse | Multi-agent | No | Yes |
+| MoA — no synthesis | Multi-agent | No | Yes |
+| MoA — same model | Multi-agent | No | No |
+| Debate | Multi-agent | Yes | No |
+| Homo-chain | Multi-agent | Yes | No |
+| MAgICoRe | Multi-agent | Yes | No |
+| HPE | Multi-agent | Yes | No |
+| Cross-chain | Multi-agent | Yes | Yes |
+
 ## Benchmark Design
 
 The benchmark tests whether a structured conversation among multiple AI models produces better solutions to hard scientific problems than the best solution that a single model can come up with using the same compute budget. The intuition behind multi-agent AI is that collaboration should help, in the same way a team of scientists can explore more of a problem than any one of them could. A single model given one attempt at a problem is a weak control, because any multi-agent system compared against it gets credit for advantages that come from sampling a model repeatedly, regardless of whether the agents' collaboration contributes anything. The stronger control in this benchmark samples one model eight independent times and keeps the best attempt. Each multi-agent protocol has to beat that. Compute budgets are held equal across all conditions, so a multi-agent protocol cannot win by spending more total resources than the baseline. Performance is measured by a hidden evaluator that the AI systems cannot see during their attempts, which forces them to solve the underlying problem to score well.

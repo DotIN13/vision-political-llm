@@ -35,7 +35,21 @@ My central claim after this week is that under matched compute budget and hidden
 
 ## Aggregate MEG Results
 
-To compare protocols on a common scale, I defined a metric called Aggregate Marginal Epistemic Gain (MEG), measuring how much a multi-agent protocol beats the strongest single-agent control at the same budget. For each protocol on each task, MEG is the gap between the protocol's hidden-evaluator score and the single-agent control's score. Averaging across all nine tasks gives one number per protocol (i.e., the Aggregate MEG). A positive value means the protocol beats single-agent on average, and a negative value means single-agent wins. None of the ten protocols produced a positive Aggregate MEG. The best performer was a diverse Mixture-of-Agents (MoA) configuration at -0.022, and the only one whose 95% confidence interval included zero, meaning it was the only protocol where the data left open the possibility of a tie with single-agent. Every other protocol lost by enough that even accounting for noise, the result was still negative. To get a clear win, you would need tasks where MoA genuinely wins to outnumber the tasks where it loses. Right now MoA is positive on DiffBases (+0.090) and Erdős (+0.021), but negative or zero on most others. Adding more tasks similar to DiffBases structurally, where different agents can contribute compatible partial solutions, could shift the aggregate positive.
+To compare protocols on a common scale, I defined a metric called Aggregate Marginal Epistemic Gain (MEG), measuring how much a multi-agent protocol beats the strongest single-agent control at the same budget. For each protocol on each task, MEG is the gap between the protocol's hidden-evaluator score and the single-agent control's score. Averaging across all nine tasks gives one number per protocol (i.e., the Aggregate MEG). A positive value means the protocol beats single-agent on average, and a negative value means single-agent wins. None of the ten protocols produced a positive Aggregate MEG. The best performer was a diverse Mixture-of-Agents (MoA) configuration at -0.022, and the only one whose 95% confidence interval included zero, meaning it was the only protocol where the data left open the possibility of a tie with single-agent. Every other protocol lost by enough that even accounting for noise, the result was still negative. Tasks where MoA contributes nothing drag its aggregate below zero. The per-task breakdown shows where the gains and losses come from:
+
+| Task | MoA MEG |
+|---|---|
+| DiffBases | +0.090 |
+| Erdős | +0.021 |
+| FlatPoly | +0.013 |
+| MaxCut | 0.000 |
+| LJ-n41 | 0.000 |
+| TSP-100 | -0.015 |
+| MolQED | -0.013 |
+| TSP-50 | -0.054 |
+| CircPack | -0.238 |
+
+The tasks where MoA wins are combinatorial problems where different agents tend to find structurally different valid configurations, giving the synthesizer something to combine. On continuous optimization and geometric packing tasks, diverse models still converge on similar numerical solutions and synthesis adds nothing. Whether MoA's aggregate would cross into positive territory on a benchmark weighted toward structurally composable tasks is an open question this result raises.
 
 ![Aggregate MEG across protocols](fun_meg.png)
 

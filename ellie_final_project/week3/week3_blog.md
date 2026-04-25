@@ -132,7 +132,7 @@ Across both ELI5 and writing, RADAR instruct achieves the best quality-coherence
 
 - **LLM-as-judge comparisons.** The large errors from the LLM-as-judge results make it difficult to compare across runs and say one run significantly outperformed the other.
 
-- **Combating the .**
+- **Preventing incoherency.** Right now, I'm only using LLM-as-judge to evaluate the incoherency observed in the ablated outputs, but I'm not quite sure as to what methodological changes I can make to help prevent against this coherency degredation seen.
 
 ---
 

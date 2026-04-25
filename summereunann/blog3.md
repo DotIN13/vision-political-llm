@@ -10,18 +10,20 @@ Over the past several weeks, I built a benchmark of nine scientific optimization
 
 | Protocol | Type | Agents interact? | Diverse models? |
 |---|---|---|---|
-| Single-shot | Single-agent | — | — |
-| Best-of-N | Single-agent | — | — |
-| Self-Refine | Single-agent | — | — |
-| VGS | Single-agent | — | — |
-| MoA — diverse | Multi-agent | No | Yes |
-| MoA — no synthesis | Multi-agent | No | Yes |
-| MoA — same model | Multi-agent | No | No |
+| Single-shot | Single-agent | N/A | N/A |
+| Best-of-N | Single-agent | N/A | N/A |
+| Self-Refine | Single-agent | N/A | N/A |
+| VGS | Single-agent | N/A | N/A |
+| MoA (diverse) | Multi-agent | No | Yes |
+| MoA (no synthesis) | Multi-agent | No | Yes |
+| MoA (same model) | Multi-agent | No | No |
 | Debate | Multi-agent | Yes | No |
 | Homo-chain | Multi-agent | Yes | No |
 | MAgICoRe | Multi-agent | Yes | No |
 | HPE | Multi-agent | Yes | No |
 | Cross-chain | Multi-agent | Yes | Yes |
+
+I also ran diverse-backbone variants of Debate, MAgICoRe, HPE, Self-Refine, VGS, Best-of-N, and Homo-chain using GPT-4o, Gemini, DeepSeek, and mixed combinations as the backbone. These are the paired comparisons used in the MIG analysis; each interaction protocol was tested with both same-model and diverse-model agents to isolate the effect of backbone diversity from the effect of interaction.
 
 ## Benchmark Design
 

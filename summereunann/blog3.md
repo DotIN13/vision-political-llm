@@ -35,7 +35,7 @@ My central claim after this week is that under matched compute budget and hidden
 
 ## Aggregate MEG Results
 
-To compare protocols on a common scale, I defined a metric called Aggregate Marginal Epistemic Gain (MEG), measuring how much a multi-agent protocol beats the strongest single-agent control at the same budget. For each protocol on each task, MEG is the gap between the protocol's hidden-evaluator score and the single-agent control's score. Averaging across all nine tasks gives one number per protocol (i.e., the Aggregate MEG). A positive value means the protocol beats single-agent on average, and a negative value means single-agent wins. None of the ten protocols produced a positive Aggregate MEG. The best performer was a diverse Mixture-of-Agents (MoA) configuration at -0.022, which was the only one whose 95% confidence interval was positive.
+To compare protocols on a common scale, I defined a metric called Aggregate Marginal Epistemic Gain (MEG), measuring how much a multi-agent protocol beats the strongest single-agent control at the same budget. For each protocol on each task, MEG is the gap between the protocol's hidden-evaluator score and the single-agent control's score. Averaging across all nine tasks gives one number per protocol (i.e., the Aggregate MEG). A positive value means the protocol beats single-agent on average, and a negative value means single-agent wins. None of the ten protocols produced a positive Aggregate MEG. The best performer was a diverse Mixture-of-Agents (MoA) configuration at -0.022, and the only one whose 95% confidence interval included zero, meaning it was the only protocol where the data left open the possibility of a tie with single-agent. Every other protocol lost by enough that even accounting for noise, the result was still negative. To get a clear win, you would need tasks where MoA genuinely wins to outnumber the tasks where it loses. Right now MoA is positive on DiffBases (+0.090) and Erdős (+0.021), but negative or zero on most others. Adding more tasks similar to DiffBases structurally, where different agents can contribute compatible partial solutions, could shift the aggregate positive.
 
 ![Aggregate MEG across protocols](fun_meg.png)
 
@@ -55,12 +55,12 @@ For each protocol, the first artifact captures the initial proposal quality befo
 
 | Protocol | Init same-model | Init diverse | Final same-model | Final diverse |
 |---|---|---|---|---|
-| MoA | +0.143 | +0.121 | +0.250 | **+0.410** |
-| Chain | +0.112 | +0.159 | +0.252 | +0.325 |
-| MAgICoRe | +0.186 | +0.146 | +0.231 | +0.212 |
-| Debate | +0.230 | +0.121 | +0.308 | +0.290 |
+| MoA | +0.074 | +0.097 | +0.194 | **+0.265** |
+| Chain | +0.167 | +0.143 | +0.219 | +0.245 |
+| MAgICoRe | +0.193 | +0.180 | +0.212 | +0.209 |
+| Debate | +0.151 | +0.047 | +0.180 | +0.166 |
 
-MoA is the only protocol where diversity produces a large final advantage (+0.161) despite starting from similar or weaker individual proposals. The synthesis step aggregates across all three diverse proposals simultaneously, exploiting their complementarity without any agent having seen another's work. For Debate and MAgICoRe, diverse agents start with weaker proposals and interaction does not recover the gap. The only protocol that successfully exploits diversity is the one that avoids interaction entirely during generation.
+MoA is the only protocol where diversity produces a net final advantage (+0.071) despite starting from comparable individual proposals. The synthesis step aggregates across all three diverse proposals simultaneously, exploiting their complementarity without any agent having seen another's work. For Debate and MAgICoRe, diverse agents start with weaker proposals and interaction does not recover the gap. The only protocol that successfully exploits diversity is the one that avoids interaction entirely during generation.
 
 ![MIG by agent diversity](mig_diversity.png)
 

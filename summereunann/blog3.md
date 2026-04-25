@@ -1,5 +1,7 @@
 # Blog 3
 
+![Header](image.png)
+
 ## Summary of Prior Work
 
 Over the past several weeks, I built a benchmark of nine scientific optimization tasks and ran ten different multi-agent collaboration protocols on each one. By the end of last week, I learned that a simple single-model baseline outranked almost every multi-agent protocol when they were scored by an evaluator that the models could not see. A ran a controlled 2x2 ablation experiment that crossed two binary variables. The first was whether the agents in a protocol came from different AI model families or copies of the same model. The second was whether the protocol included a step that combined the agents' proposals into a single final answer. The first variable was important, but the second one was not. Backbone diversity is when there is a mix of underlying models, and this turned out to be the differentiating feature.

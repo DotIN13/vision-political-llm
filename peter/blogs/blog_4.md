@@ -45,7 +45,7 @@ This suggests the model is capable of identifying explicit visual symbols for po
 
 While the MAGA hat experiment was a success, a broader review of our generated datasets revealed another troubling trend. 
 
-We noticed that in our baseline images, the model's probe was consistently coloring diversified politicians in blue (indicating a liberal ideology score), while the white male politicians from our tie examples were predominantly colored in red (indicating a conservative ideology score).
+We noticed that in our baseline images, the model's probe was consistently coloring diversified politicians in blue (indicating a liberal ideology score, as seen in the figure in [Section 1](#1-the-power-of-explicit-symbols-the-maga-hat-effect)), while the white male politicians from our tie examples were predominantly colored in red (indicating a conservative ideology score, as seen in the figure below).
 
 ![Tie Examples](./images/diff.png)
 
